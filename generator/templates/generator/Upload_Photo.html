@@ -1,0 +1,159 @@
+{% extends 'generator/layout.html' %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <!-- header -->
+    <header class="header_admin" id="header">
+        <div class="top_header">
+            <h1 class="logo"><a href="{% url 'generator:home' %}"><img src="{% static 'images/logo.png' %}" alt="EVM"></a></h1>
+        </div>
+        <nav>
+            <ul class="gnb">
+                <li>
+                    <a href="{% url 'generator:Upload_Photo' %}">문제 생성</a>
+                    <br><br>
+                    <a href="{% url 'generator:show_UserProblem' %}">생성한 문제 보기</a>
+                     <br><br>
+                    <a href="{% url 'generator:show_UserBlankNum' %}">빈칸 개수 수정</a>
+                     <br><br>
+                    <a href="{% url 'generator:show_DeveloperInfo' %}">개발자 정보</a>
+                     <br><br>
+                </li>
+            </ul>
+        </nav>
+    <style>
+        body{background-image: url('https://i.ibb.co/N2btZq6/background.png');
+             background-repeat:no-repeat;
+            background-position:1%1% ;
+            background-attachment: fixed;
+            background-size:126%126%;
+        }
+    </style>
+    </header>
+    <!-- //header -->
+    <style>
+        .left-box {
+            margin-left: 50px;
+            width: 100%;
+        }
+        .input_st{
+            display: block;
+            width: 340px;
+            background-color: transparent;
+            -webkit-appearance: none;
+            border: solid 1px #CED4DA;
+            padding: 5px;
+            margin: 1.6rem 0;
+            font-size: 1.3rem;
+            border-radius: 3px;
+            float: right;
+            margin-right: 20px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .input_tx{
+            display: inline-block;
+            line-height: 50px;
+        }
+        .input_bx{
+            margin-bottom: 26px;
+        }
+        .title_style{
+            font-family: 'Limelight', cursive;
+            margin-bottom: 20px;
+            font-size: 4em;
+        }
+        .blue_btn{
+            background-color: #B4B4B4;
+            color: #ffffff;
+            width: 310px;
+            height: 35px;
+            border: none;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .gr_selet{
+            width: 300px;
+            display: block;
+            width: 340px;
+            background-color: transparent;
+            -webkit-appearance: none;
+            border: solid 1px #B4B4B4;
+            padding: 5px;
+            margin: 1.6rem 0;
+            font-size: 1.3rem;
+            border-radius: 3px;
+            float: right;
+            margin-right: 20px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            height: 45px;
+
+        }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+
+    <!-- main page part -->
+    <main id="container">
+        <section class="page_admin">
+            <div class="tit">
+                <div class="member_info_wrap">
+                    <button type="button" class="member_info">
+                       <strong>{{email}}</strong>
+                    </button>
+                    <ul class="list_member_menu">
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="#">Change Password</a></li>
+                        <li><a href="#">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="left-box" style="width: 40%;">
+                <p class="title_style">
+                    Image Upload
+                </p>
+                <body>
+                <form method="POST" action="{% url 'generator:create' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="input_bx">
+                        <span class="input_tx">문제 유형</span>
+                        <select name="problem_type" class="gr_selet">
+                            <option value="order">순서</option>
+                            <option value="blank">빈칸</option>
+                            <option value="insert">삽입</option>
+                            <option value="subject">주제/요지</option>
+                        </select>
+                    </div>
+                    <div class="input_bx">
+                        <span class="input_tx">이미지 업로드</span>
+                        <input type="file" name="imgs" class="input_st">
+                    </div>
+                    <div class="input_bx">
+                        <span class="input_tx" >정답 번호</span>
+                        <input type="text" placeholder = "1~5 사이의 숫자를 입력하세요." class="input_st" name="answer">
+                    </div>
+                    <div class="input_bx">
+                        <span class="input_tx">원하는 빈칸 수</span>
+                        <input type="text" placeholder="1~10 사이의 숫자를 입력하세요." class="input_st" name="blank_num">
+                    </div>
+                    <div class="input_bx">
+                        <span class="input_tx">문제 정보</span>
+                        <input type="text" placeholder = "EX) 2021 수능특강 빈칸유형 1번" class="input_st" name="info">
+                    </div>
+                    <div class="input_bx">
+                        <span class="input_tx">키워드 여러 번 등장 시 다중 빈칸 생성 여부</span>
+                        <input type="hidden" name="keyword_duplicate" value="False" />
+                        <label><input type="checkbox" name="keyword_duplicate" value = "True"></label>
+                    </div>
+                    <input type="submit" value="Upload" class="blue_btn" style="margin-left: 105px">
+                </form>
+                </body>
+            </div>
+        </section>
+    </main>
+{% endblock %}

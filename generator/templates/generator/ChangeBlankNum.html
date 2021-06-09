@@ -1,0 +1,137 @@
+{% extends 'generator/layout.html' %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <!-- header -->
+    <head>
+
+    <script> <!-- 이 버튼은 빈칸 개수 수정용 -->
+        function change_blank_num(num){
+            var popUrl="http://127.0.0.1:8000/generator/OneBlankNum/";
+            popUrl += num;
+            popUrl += "/"
+            var popOption="width=500,height=600,resizable=yes,scrollbars=yes";
+            var p = window.open(popUrl,"popup1",popOption);
+
+            p.focus();
+            window.resizeTo(500,600);
+        }
+
+    </script>
+
+    </head>
+    <header class="header_admin" id="header">
+        <div class="top_header">
+            <h1 class="logo"><a href="{% url 'generator:home' %}"><img src="{% static 'images/logo.png' %}" alt="EVM"></a></h1>
+        </div>
+        <nav>
+            <ul class="gnb">
+                <li>
+                    <a href="{% url 'generator:Upload_Photo' %}">문제 생성</a>
+                    <br><br>
+                    <a href="{% url 'generator:show_UserProblem' %}">생성한 문제 보기</a>
+                    <br><br>
+                    <a href="{% url 'generator:show_UserBlankNum' %}">빈칸 개수 수정</a>
+                     <br><br>
+                    <a href="{% url 'generator:show_DeveloperInfo' %}">개발자 정보</a>
+                     <br><br>
+                </li>
+            </ul>
+        </nav>
+      <style>
+        body{background-image: url('https://i.ibb.co/N2btZq6/background.png');
+             background-repeat:no-repeat;
+            background-position:1%1% ;
+            background-attachment: fixed;
+            background-size:126%126%;
+
+        }
+
+      </style>
+    </header>
+    <!-- //header -->
+
+    <script>
+        function popup_problem(target) {
+        }
+    </script>
+    <style>
+    tr{
+       height: 70px;
+        padding-left: 20px;
+    }
+    tr th:first-child{
+        padding-left: 20px;
+        font-size: 2em;
+    }
+    tr td:first-child{
+        padding-left: 20px;
+        font-size: 1.2em;
+    }
+    tr td:nth-child(2){
+        padding-left: 25px;
+        font-size: 1.2em;
+    }
+
+    </style>
+    <!-- show problem popup -->
+     <div style="display:none" class="popup" id='show_UserProblem{{ target.employee_id }}'>
+        <div class ="popuptext">
+            <h3 class="tit">문제</h3>
+            <ul class="list_info">
+                        <li st>
+                            <b>문제 정보</b>
+                            <span>{{ target.info }}</span>
+                        </li>
+                        <br><br>
+                        <li>
+                            <b>문제 사진</b>
+                            <<img src="{{ target.problem_image.url}}" alt = "ProblemImage" width="400">
+                        </li>
+            </ul>
+            <button type="button" class="btn_close" >popup close button</button>
+        </div>
+    </div>
+
+    <!-- main page part -->
+    <main id="container">
+        <section class="page_admin">
+            <div class="tit">
+                <div class="member_info_wrap">
+                    <button type="button" class="member_info">
+                       <strong>{{email}}</strong>
+                    </button>
+                    <ul class="list_member_menu">
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="#">Change Password</a></li>
+                        <li><a href="#">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th> <font style="font-size: 20px; font-weight: bold;">문제 정보</font>
+                    <th> <font style="font-size: 20px; font-weight: bold;">　빈칸 개수</font></th>
+                    <th> <font style="font-size: 20px; font-weight: bold;">　빈칸 개수 및 키워드 중복 여부 수정</font></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for candidate in candidates %}
+                    <tr>
+                        <td> {{ candidate.info }} </td>
+                        <td>　 {{candidate.blank_num}} </td>
+                        <td><input type="button" onclick='change_blank_num("{{ candidate.problem_id }}")'
+                                                   value="수정" class="btn_type4"
+                        style="width:120pt"></td>
+                    </tr>
+                {% endfor %}
+                <tbody>
+            </table>
+        </section>
+    </main>
+{% endblock %}

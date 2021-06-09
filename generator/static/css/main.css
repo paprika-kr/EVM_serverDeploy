@@ -1,0 +1,101 @@
+@charset "utf-8";
+#wrap{ width:100%;   text-align:left; min-width:1600px; /*overflow: hidden;*/}
+.inner{width:1200px; clear:both; margin:0 auto;}
+/* skip navigation */
+.skipnavi{position:absolute; z-index:9999; top:0; left:0; width:100%;}
+.skipnavi a{position:absolute; z-index:-1; top:-100px; left:0;}
+.skipnavi a:focus,
+.skipnavi a.focus{z-index:100; top:-100px; width:100%; padding:10px 0 8px; border:1px solid #ccc; text-align:center; font-weight:bold; background-color:#000; top:0; color:#fff;}
+/* 메인
+---------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* placeholder color */
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #666; font-size: 16px;}/* WebKit, Blink, Edge */
+input:-moz-placeholder,textarea:-moz-placeholder {color: #666; font-size: 16px; opacity: 1;} /* Firefox 4 to 18 */
+input::-moz-placeholder,textarea::-moz-placeholder {color: #666; font-size: 16px; opacity: 1;} /* Firefox 19+ */
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #666 !important; font-size: 16px !important;} /* Internet Explorer 10-11 */
+input::-ms-input-placeholder,textarea::-ms-input-placeholder {color: #666; font-size: 16px;} /* Microsoft Edge */
+input::placeholder,textarea::placeholder {color: #666; font-size: 16px;} /* Most modern browsers support this now */
+
+input::-ms-clear,input::-ms-reveal {
+	display: none;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration{
+	display:none;
+}
+select::-ms-expand {display: none;} 
+
+
+/************************* 공통 *****************************/
+
+
+body.on {overflow: hidden;}
+
+body,button,input,select,textarea,table {
+	font-family: 'Roboto','Montserrat','맑은 고딕','malgun gothic',sans-serif;
+	font-size: 16px;
+	letter-spacing: -0.025em;
+}
+
+/* 인풋 스타일 공통 */
+.body .input_box {border: 1px solid #ddd; width: 100%; height: 70px; border-radius: 5px; background: #fff;}
+.body .input_box input {padding: 0 30px; height: 100%; font-size: 16px; line-height: normal; color: #666; border: none; background: none;}
+
+/* 라디오버튼 스타일 공통 */
+.body .radio_box input[type="radio"] + label {position: relative; padding-left: 22px;}
+.body .radio_box input[type="radio"] + label:before {content: ''; position: absolute; left: 0; top: 50%; width: 12px; height: 12px; border: 1px solid #bbb; border-radius: 100%; transform: translateY(-50%);}
+.body .radio_box input[type="radio"] + label:after {content: ''; position: absolute; left: 4px; top: 50%; width: 6px; height: 6px; background: #1c69d4; border-radius: 100%; transform: translateY(-50%); display: none;}
+.body .radio_box input[type="radio"]:checked + label:after {display: block;}
+
+/* 체크박스 스타일 공통 */
+.chk_box input[type="checkbox"] + label {position: relative; padding-left: 30px; font-size: 14px;}
+.chk_box input[type="checkbox"] + label:before {content: ''; position: absolute; left: 0; top: 1px; width: 17px; height: 17px; border: 1px solid rgb(221,221,221); border-radius: 100%; transition: all .1s;}
+.chk_box input[type="checkbox"] + label:after {content: ''; position: absolute; left: 4px; top: 6px; width: 11px; height: 9px; background: url(../images/ic_chk.png) no-repeat 50% 50%; background-size: 100%; opacity: 0; transition: all .1s;}
+.chk_box input[type="checkbox"]:checked + label:before {background: rgb(32,161,124); border-color: rgb(32,161,124);}
+.chk_box input[type="checkbox"]:checked + label:after {opacity: 1;}
+
+/* 셀렉 스타일 공통 */
+.select_type1 {border: 1px solid #ddd; position: relative; background: #fff; height: 50px;}
+.select_type1:after {content: ''; position: absolute; right: 20px; top: 50%; width: 9px; height: 6px; background: url(../images/ic_arr.png) no-repeat 50% 50%; background-size: 100%; transform: translateY(-50%);}
+.select_type1 select {padding: 0 20px; font-size: 18px; color: #333; background: none; z-index: 1; position: relative; height: 100%;}
+
+/* 인풋 파일 스타일 */
+.file_wrap .input_box {width: calc(100% - 98px); border: 1px solid #bbb;}
+.file_wrap .input_box input[type="file"] {height: 50px; line-height: normal; padding: 0;}
+.file_wrap label {line-height: 45px; color: #fff; font-size: 15px; background: #8e8e8e; display: inline-block; vertical-align: middle; width: 90px; text-align: center; margin-left: 3px;}
+
+/* button */
+.btn_type1 {display: inline-block; vertical-align: top; background: #ff3300; border-radius: 5px; color: #fff; font-size: 20px; font-weight: 500; text-align: center; line-height: 30px; padding: 20px 0;}
+.btn_type2 {display: inline-block; vertical-align: top; background: #fff; border: 1px solid #ddd; box-sizing: border-box; border-radius: 5px; color: #666; font-size: 16px; font-weight: 400; text-align: center; line-height: 25px; padding: 5px 20px; border-radius: 35px; transition: all .3s;}
+.btn_type2:hover {border-color: #ff3300; color: #ff3300;}
+.btn_type3 {margin: 0 7px; display: inline-block; vertical-align: top; background: #fff; border: 1px solid #0e9c00; background: #0e9c00; box-sizing: border-box; border-radius: 5px; color: #fff; font-size: 16px; font-weight: 400; text-align: center; line-height: 25px; padding: 5px 20px; border-radius: 35px; transition: all .3s;}
+.btn_type3.btn_red {background: #ff3300; border-color: #ff3300;}
+.btn_type4 {width: 110px; display: inline-block; vertical-align: top; background: #fff; border: 1px solid #ddd; box-sizing: border-box; border-radius: 5px; color: #666; font-size: 16px; font-weight: 400; text-align: center; line-height: 25px; padding: 5px 20px; border-radius: 35px; transition: all .3s;}
+.btn_type4:hover {border-color: #ff3300; color: #ff3300;}
+.btn_type4.off {cursor: default; opacity: .5;}
+.btn_type4.off:hover {border-color: #ddd; color: #666;}
+.btn_type5 {width: 110px; display: inline-block; vertical-align: top; background: #eee; border: 1px solid #ddd; box-sizing: border-box; border-radius: 5px; color: #666; font-size: 16px; font-weight: 400; text-align: center; line-height: 25px; padding: 5px 20px; border-radius: 35px; transition: all .3s;}
+.btn_plus {display: inline-block; vertical-align: top; line-height: 30px; padding: 10px 30px; font-size: 18px; font-weight: 500; color: #fff; background: #ff3300; border-radius: 5px;}
+.btn_plus:after {content: ''; width: 17px; height: 17px; background: url(../images/ic_plus.png) no-repeat 50% 50%; background-size: 100%; display: inline-block; vertical-align: middle; margin-left: 25px;}
+
+
+
+
+/************************* header *****************************/
+.header {padding: 60px 0;}
+.header .header_inner {padding: 0 110px;}
+.header .header_inner::after {content: ''; display: block; clear: both;}
+.header .logo {float: left;}
+.header .logo a {display: block;}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+.dashboard {
+    background-repeat: no-repeat;
+    background-size: 80% 60%;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+.card {
+    margin: 20px;
+}

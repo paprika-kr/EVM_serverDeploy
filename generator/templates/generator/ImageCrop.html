@@ -1,0 +1,244 @@
+{% extends 'generator/layout.html' %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <!-- header -->
+    <header class="header_admin" id="header">
+        <div class="top_header">
+            <h1 class="logo"><a href="{% url 'generator:home' %}"><img src="{% static 'images/logo.png' %}" alt="EVM"></a></h1>
+        </div>
+        <nav>
+            <ul class="gnb">
+                <li>
+                    <a href="{% url 'generator:Upload_Photo' %}">문제 생성</a>
+                    <br><br>
+                    <a href="{% url 'generator:show_UserProblem' %}">생성한 문제 보기</a>
+                     <br><br>
+                    <a href="{% url 'generator:show_UserBlankNum' %}">빈칸 개수 수정</a>
+                     <br><br>
+                    <a href="{% url 'generator:show_DeveloperInfo' %}">개발자 정보</a>
+                     <br><br>
+                </li>
+            </ul>
+        </nav>
+    <style>
+        body{background-image: url('https://i.ibb.co/N2btZq6/background.png');
+             background-repeat:no-repeat;
+            background-position:1%1% ;
+            background-attachment: fixed;
+            background-size:126%126%;
+        }
+    </style>
+
+    </header>
+    <!-- //header -->
+    <style>
+        .left-box {
+            margin-left: 50px;
+            width: 100%;
+        }
+        .input_st{
+            display: block;
+            width: 340px;
+            background-color: transparent;
+            -webkit-appearance: none;
+            border: solid 1px #CED4DA;
+            padding: 5px;
+            margin: 1.6rem 0;
+            font-size: 1.3rem;
+            border-radius: 3px;
+            float: right;
+            margin-right: 20px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .input_tx{
+            display: inline-block;
+            line-height: 50px;
+        }
+        .input_bx{
+            margin-bottom: 26px;
+        }
+        .title_style{
+            font-family: 'Limelight', cursive;
+            margin-bottom: 20px;
+            font-size: 4em;
+        }
+        .blue_btn{
+            background-color: #B4B4B4;
+            color: #ffffff;
+            width: 310px;
+            height: 35px;
+            border: none;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .gr_selet{
+            width: 300px;
+            display: block;
+            width: 340px;
+            background-color: transparent;
+            -webkit-appearance: none;
+            border: solid 1px #B4B4B4;
+            padding: 5px;
+            margin: 1.6rem 0;
+            font-size: 1.3rem;
+            border-radius: 3px;
+            float: right;
+            margin-right: 20px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            height: 45px;
+
+        }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+
+ <!-- Image crop settings -->
+        <meta charset="UTF-8">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.3/cropper.css'>
+        <style>
+            /* Limit image width to avoid overflow the container */
+            img {
+              max-width: 100%; /* This rule is very important, please do not ignore this! */
+            }
+
+            #canvas {
+              height: 463px;
+              width: 463px;
+              background-color: #ffffff;
+              cursor: default;
+              border: 1px solid black;
+            }
+        </style>
+
+        <script>
+            function opencrop(){
+                 $("#modalCrop").modal("show");
+            };
+            function closecrop(){
+                 $("#modalCrop").modal("hide");
+            };
+
+            window.console = window.console || function(t) {};
+            if (document.location.search.match(/type=embed/gi)) {
+               window.parent.postMessage("resize", "*");
+            }
+        </script>
+
+    <!-- main page part -->
+    <main id="container">
+        <section class="page_admin">
+            <div class="tit">
+                <div class="member_info_wrap">
+                    <button type="button" class="member_info">
+                       <strong>{{email}}</strong>
+                    </button>
+                    <ul class="list_member_menu">
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="#">Change Password</a></li>
+                        <li><a href="#">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <br><br><br>
+            <img class="left-box" style="width: 40%;">
+                <p class="title_style" style="margin-left: 70px">
+                    Image Crop
+                </p>
+                <font size="3em" face="나눔고딕" style="margin-left: 70px">
+                * 예시처럼, 문제와 보기 이외에 다른 문자가 안 들어가게 잘라주세요! </font><br>
+                <font size="5em" face="나눔고딕" style="margin-left: 70px">
+                [ 이미지 자르기 예시 ]</font><br><br>
+                <img src="{{ example.image.url}}" alt = "ProblemImage" width="400" style="margin-left: 70px"> <br><br>
+                <body>
+                <form method="POST" action="{% url 'generator:createCropImage' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <td><input type="button" onclick="opencrop();"
+                                                   value="이미지 자르기" class="blue_btn" style="margin-left: 70px"></td>
+                    <br><br>
+                </form>
+
+                 <!-- MODAL TO CROP THE IMAGE -->
+                  <div class="modal fade" id="modalCrop">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" onclick="closecrop();" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">✖</span>
+                          </button>
+                          <h4 class="modal-title">Crop the photo</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+        <!-- Below are a series of inputs which allow file selection and interaction with the cropper api -->
+                                <input type="file" id="fileInput" accept="image/*" />
+                            </p></br>
+                            <div>
+                                <canvas id="canvas">
+                                    Your browser does not support the HTML5 canvas element.
+                                </canvas>
+                            </div></br>
+                                <input type="button" id="btnCrop" value="Crop" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="button" id="btnRestore" value="Restore" /></br>
+                            <div id="result"></div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                <!-- Image crop js Function -->
+                <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+                <script src='https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.3/cropper.js'></script>
+                <script id="rendered-js" >
+                    var canvas = $("#canvas"),
+                    context = canvas.get(0).getContext("2d"),
+                    $result = $('#result');
+
+                    $('#fileInput').on('change', function () {
+                      if (this.files && this.files[0]) {
+                        if (this.files[0].type.match(/^image\//)) {
+                          var reader = new FileReader();
+                          reader.onload = function (evt) {
+                            var img = new Image();
+                            img.onload = function () {
+                              context.canvas.height = img.height;
+                              context.canvas.width = img.width;
+                              context.drawImage(img, 0, 0);
+                              var cropper = canvas.cropper();
+
+                              $('#btnCrop').click(function () {
+                                // Get a string base 64 data url
+                                var croppedImageDataURL = canvas.cropper('getCroppedCanvas').toDataURL("image/png");
+                                $result.append($('<img>').attr('src', croppedImageDataURL));
+                              });
+                              $('#btnRestore').click(function () {
+                                canvas.cropper('reset');
+                                $result.empty();
+                              });
+                            };
+                            img.src = evt.target.result;
+                          };
+                          reader.readAsDataURL(this.files[0]);
+                        } else
+                        {
+                          alert("Invalid file type! Please select an image file.");
+                        }
+                      } else
+                      {
+                        alert('No file(s) selected.');
+                      }
+                    });
+                    //# sourceURL=pen.js
+                </script>
+                </body>
+            </div>
+        </section>
+    </main>
+{% endblock %}

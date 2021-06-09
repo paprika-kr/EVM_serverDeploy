@@ -1,0 +1,21 @@
+*.log
+*.pot
+*.pyc
+.DS_Store
+generator/__pycache__/
+EVM/__pycache__/
+#local_settings.py
+db.sqlite3
+media/problems/
+media/results/
+
+#static root
+.static_root/
+.idea/
+#secretkey
+secret_key.json
+
+__pycache__/
+*.py[cod]
+.Python
+venv/

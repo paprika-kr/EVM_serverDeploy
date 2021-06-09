@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>문제</title>
+    <style>
+        .blue_btn{
+            background-color: #B4B4B4;
+            color: #ffffff;
+            width: 100px;
+            height: 35px;
+            border: none;
+            margin-top:2px;
+            cursor: pointer;
+
+        }
+    </style>
+    <form method="POST" action="{% url 'generator:ChangeBlankNum' candidates.problem_id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br><br>
+        <b><font size="4em" face="나눔고딕">기존 문제 사진</font></b>
+        <img src="{{ candidates.problem_image.url}}" alt = "ProblemImage" width="575">
+        <br><br>
+        <b><font size="4em" face="나눔고딕">기존 빈칸 개수 : </b>
+        <span>{{ candidates.blank_num }}개</span></font>
+        <br><br>
+        <b><font size="4em" face="나눔고딕">바꿀 빈칸 개수</font></b>
+        <input type="text" class="input_st" name="blank_num" style="
+        width:240px; font-size:1em">
+        <br><br>
+        <b><font size="4em" face="나눔고딕">키워드 여러 번 등장 시 다중 빈칸 생성 여부</font></b>
+        <input type="hidden" name="keyword_duplicate" value="False" />
+        <label><input type="checkbox" name="keyword_duplicate" value = "True"></label>
+        <br><br>
+        <input type="submit" value="Update" class="blue_btn" style="margin-left:190px ">
+    </form>
+</head>
+<body>
+
+</body>
+</html>

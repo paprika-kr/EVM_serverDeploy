@@ -1,0 +1,72 @@
+{% extends 'generator/layout.html' %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <!-- header -->
+    <header class="header_admin" id="header">
+        <div class="top_header">
+            <h1 class="logo"><a href="{% url 'generator:home' %}"><img src="{% static 'images/logo.png' %}" alt="EVM"></a></h1>
+        </div>
+        <nav>
+            <ul class="gnb">
+                <li>
+                    <a href="{% url 'generator:Upload_Photo' %}">문제 생성</a>
+                    <br><br>
+                    <a href="{% url 'generator:show_UserProblem' %}">생성한 문제 보기</a>
+                     <br><br>
+                    <a href="{% url 'generator:show_UserBlankNum' %}">빈칸 개수 수정</a>
+                     <br><br>
+                    <a href="{% url 'generator:show_DeveloperInfo' %}">개발자 정보</a>
+                     <br><br>
+                </li>
+            </ul>
+        </nav>
+        <style>
+        body{background-image: url('https://i.ibb.co/N2btZq6/background.png');
+             background-repeat:no-repeat;
+            background-position:1%1% ;
+            background-attachment: fixed;
+            background-size:126%126%;
+        }
+        </style>
+    </header>
+    <!-- //header -->
+
+    <!-- main page part -->
+    <!-- 첫화면인데.. 문제수 세는방법..-->
+    <main id="container">
+        <section class="page_admin">
+            <div class="tit">
+                <div class="member_info_wrap">
+                    <button type="button" class="member_info">
+                       <strong>{{ email}}</strong>
+                    </button>
+                    <ul class="list_member_menu">
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="#">Change Password</a></li>
+                        <li><a href="#">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+             <div class="dashboard">
+                <div class="card-deck d-flex">
+                    <div class="card bg-light mb-3" style="max-width: 25rem;">
+                        <div class="card-header">생성한 문제 수 </div>
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text">
+                                {{ PN }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+{% endblock %}

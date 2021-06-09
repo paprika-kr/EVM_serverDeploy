@@ -1,0 +1,100 @@
+.section_inner {padding: 0 110px;}
+/************************* ADMIN 관리자 페이지 *****************************/
+/* 탭 */
+.tab_type1 {display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex;}
+.tab_type1 li {width: 260px; position: relative; border-bottom: 1px solid #ddd;}
+.tab_type1 li:after {content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px; background: #333; display: none;}
+.tab_type1 li a {display: block; text-align: center; font-size: 18px; color: #666; line-height: 30px; padding: 20px 0;}
+.tab_type1 li.on a {font-weight: 500; color: #333;}
+.tab_type1 li.on:after {display: block;}
+
+
+/* admin sign up페이지 */
+.page_admin_signup {padding-bottom: 145px;}
+.page_admin_signup::after {content: ''; display: block; clear: both;}
+.page_admin_signup .section_inner {display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; -webkit-justify-content: space-between; justify-content: space-between;}
+.page_admin_signup .img_map {max-width: 960px; width: 60%;}
+.page_admin_signup .form_con {width: 40%; background: #f8f8f8; padding: 70px; box-sizing: border-box; margin-left: 50px;}
+.page_admin_signup .form_con .tit {padding-bottom: 40px;}
+.page_admin_signup .form_con .tit span {display: block; font-size: 15px; color: #666;}
+.page_admin_signup .form_con .tit span a {text-decoration: underline;}
+.page_admin_signup .form_con h2 {font-size: 40px; color: #333; font-weight: 700;}
+.page_admin_signup .form_con h3 {font-size: 30px; color: #333;}
+.page_admin_signup .tbl_wrap1 th {display: block; width: 100%; padding: 6px 0; font-size: 16px; font-weight: 400; color: #333; text-align: left;}
+.page_admin_signup .tbl_wrap1 td {display: block; width: 100%; padding-bottom: 16px;}
+.page_admin_signup .btn_wrap a {width: 100%; display: block;}
+.page_admin_signup .link_wrap {text-align: center; font-size: 16px; padding-top: 20px; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center;}
+.page_admin_signup .link_wrap2 {-webkit-box-pack: justify; -ms-flex-pack: justify; -webkit-justify-content: space-between; justify-content: space-between;}
+.page_admin_signup .link_wrap span {font-size: inherit; color: #666;}
+.page_admin_signup .link_wrap a {text-decoration: underline; margin-left: 2px; font-size: inherit; color: #333; font-weight: 500;}
+
+
+/* 관리자 header */
+.header_admin {position: fixed; left: 0; top: 0; width: 320px; height: 100%; border-right: 1px solid #ddd; box-sizing: border-box; background: #fff; z-index: 100;}
+.header_admin .top_header {text-align: center; padding: 65px 0;}
+.header_admin .top_header .logo {display: inline-block; vertical-align: top;}
+.header_admin .top_header .logo a {display: block;}
+.header_admin nav {border-top: 1px solid #ddd;}
+.header_admin .gnb > li {padding: 30px; box-sizing: border-box;}
+.header_admin .gnb > li > a {font-size: 18px; color: #666; padding: 0 30px; display: block; position: relative;}
+.header_admin .gnb > li > a:before {content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;}
+.header_admin .gnb > li > a:after {content: ''; position: absolute; right: 0; top: 50%; width: 10px; height: 6px; transform: translateY(-50%); background: url(../images/ic_arr.png) no-repeat 50% 50%; background-size: 100%; display: none;}
+.header_admin .gnb > li:nth-of-type(1) > a:before {background: url(../images/ic_nav1.png) no-repeat 50% 50%; background-size: 18px;}
+.header_admin .gnb > li:nth-of-type(2) > a:before {background: url(../images/ic_nav2.png) no-repeat 50% 50%; background-size: 18px;}
+.header_admin .gnb > li:nth-of-type(3) > a:before {background: url(../images/ic_nav3.png) no-repeat 50% 50%; background-size: 18px;}
+.header_admin .gnb > li:nth-of-type(4) > a:before {background: url(../images/ic_nav4.png) no-repeat 50% 50%; background-size: 18px;}
+.header_admin .gnb > li:nth-of-type(5) > a:before {background: url(../images/ic_nav5.png) no-repeat 50% 50%; background-size: 17px;}
+.header_admin .gnb .depth2 li {padding-left: 30px;}
+.header_admin .gnb .depth2 li a {padding-left: 12px; display: block;  box-sizing: border-box; position: relative; font-size: 18px; color: #666;}
+.header_admin .gnb .depth2 li a:before {content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 4px; height: 4px; background: #666;}
+
+.header_admin .gnb > li.on {background: #f8f8f8; border-bottom: 1px solid #eee; border-top: 1px solid #eee;}
+.header_admin .gnb > li.on:nth-of-type(1) > a:before {background-image: url(../images/ic_nav1_on.png);}
+.header_admin .gnb > li.on:nth-of-type(2) > a:before {background-image: url(../images/ic_nav2_on.png);}
+.header_admin .gnb > li.on:nth-of-type(3) > a:before {background-image: url(../images/ic_nav3_on.png);}
+.header_admin .gnb > li.on:nth-of-type(4) > a:before {background-image: url(../images/ic_nav4_on.png);}
+.header_admin .gnb > li.on:nth-of-type(5) > a:before {background-image: url(../images/ic_nav5_on.png);}
+.header_admin .gnb > li.on > a {color: #ff3300; font-weight: 500;}
+.header_admin .gnb > li.on:nth-of-type(2) > a:after {display: block;}
+.header_admin .gnb .depth2 li.on a {color: #ff3300; font-weight: 500; text-decoration: underline;}
+.header_admin .gnb .depth2 li.on a:before {background: #ff3300;}
+
+/* 관리자 페이지 틀 */
+.page_admin {padding-left: 320px; box-sizing: border-box;}
+.page_admin .tit {position: relative; padding: 15px 40px; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; -webkit-justify-content: space-between; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; z-index: 200;}
+.page_admin .tit h2 {font-size: 25px; font-weight: 700; color: #333; }
+.page_admin .tit .member_info_wrap {position: relative;}
+.page_admin .tit .member_info {padding-right: 30px; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; position: relative;}
+.page_admin .tit .member_info:after {content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 10px; height: 6px; background: url(../images/ic_arr1.png) no-repeat 50% 50%; background-size: 100%;}
+.page_admin .tit .member_info .img {border: 1px solid #ddd; width: 40px; height: 40px; border-radius: 100%; overflow: hidden; box-sizing: border-box; background: url(../images/ic_empty.png) no-repeat 50% 50%; background-size: 18px;}
+.page_admin .tit .member_info .img img {width: 100%; height: 100%;}
+.page_admin .tit .member_info strong {margin-left: 10px; font-size: 15px; font-weight: 500; color: #333;}
+.page_admin .tit .list_member_menu {padding: 15px; position: absolute; left: 0; top: 40px; width: 100%; background: #fff; border: 1px solid #ddd; box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16); text-align: center; box-sizing: border-box; display: none;}
+.page_admin .tit .list_member_menu li:last-of-type a {padding-left: 20px; font-size: 14px; color: #ff3300; position: relative;}
+.page_admin .tit .list_member_menu li:last-of-type a:before {content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; background: url(../images/ic_logout.png) no-repeat 50% 50%; background-size: 100%;}
+.page_admin .tit .list_member_menu li a {font-size: 14px; color: #333;}
+.page_admin .tit .list_member_menu li a:hover {text-decoration: underline;}
+.page_admin .tit .member_info_wrap.on .list_member_menu {display: block;}
+.page_admin .con {background: #f8f8f8; padding: 40px; min-height: calc(100vh - 70px); box-sizing: border-box; position: relative;}
+.page_admin .con .tbl_wrap2 {padding-top: 30px;}
+.page_admin .con .tbl_wrap2 th {font-size: 18px; font-weight: 500; color: #fff; text-align: center; padding: 15px 0; line-height: normal; position: relative; background: #999;}
+.page_admin .con .tbl_wrap2 th:first-of-type {border-radius: 5px 0 0 5px;}
+.page_admin .con .tbl_wrap2 th:last-of-type {border-radius: 0 5px 5px 0;}
+.page_admin .con .tbl_wrap2 th:before {content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 24px; background: #bbb;}
+.page_admin .con .tbl_wrap2 th:first-of-type:before {display: none;}
+.page_admin .con .tbl_wrap2 th span {display: block; text-align: center; font-weight: 400; font-size: 15px;}
+.page_admin .con .tbl_wrap2 td {font-size: 18px; font-weight: 400; color: #666; text-align: center; line-height: normal; background: #fff; padding: 18px 0;}
+.page_admin .con .tbl_wrap2 td a {vertical-align: middle;}
+.page_admin .con .tbl_wrap2 tbody tr {border-bottom: 1px solid #ddd;}
+.page_admin .con .tbl_wrap2 tbody tr:first-of-type {border-radius: 5px 5px 0 0;}
+.page_admin .con .tbl_wrap2 tbody tr:last-of-type {border-radius: 0 0 5px 5px; border-bottom: none;}
+.page_admin .con .btn_plus {position: absolute; right: 40px; top: 60px;}
+
+
+/* admin Guard Management */
+.page_admin .txt_name {text-align: left; padding: 0 30px;}
+.page_admin .txt_name .img {margin-right: 10px; display: inline-block; vertical-align: middle; width: 30px; height: 30px; border: 1px solid #ddd; border-radius: 100%; box-sizing: border-box; background: url(../images/ic_empty.png) no-repeat 50% 50%; background-size: 18px; overflow: hidden;}
+.page_admin .txt_name .img img {width: 100%; height: 100%;}
+.page_admin .txt_name .txt {display: inline-block; vertical-align: middle; width: calc(100% - 50px);}
+
+

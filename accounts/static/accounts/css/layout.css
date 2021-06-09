@@ -1,0 +1,29 @@
+.navbar-brand {
+    padding-left: 200px;
+}
+
+.main_left{
+    padding-left: 200px;
+    width: 1000px;
+    float:left;
+    /* 사실상 효과 없음 */
+    min-height: 500px;
+    background-image: url('../images/slogan.PNG');
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
+}
+
+.main_right{
+
+    /* 0526 솔
+    지워버림!!
+    */
+}
+
+.accounts-box-header{
+    margin-bottom: 20px;
+}
+
+.accounts-box-footer{
+    margin-top: 20px;
+}

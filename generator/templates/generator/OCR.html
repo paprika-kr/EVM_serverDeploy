@@ -1,0 +1,160 @@
+{% extends 'generator/layout.html' %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <style>
+        .blue_ktn{
+            background-color: #B4B4B4;
+            color: #ffffff;
+            width: 300px;
+            height: 70px;
+            border: none;
+            margin-top:2px;
+            cursor: pointer;
+
+        }
+    </style>
+    <!-- header -->
+    <header class="header_admin" id="header">
+        <div class="top_header">
+            <h1 class="logo"><a href="{% url 'generator:home' %}"><img src="{% static 'images/logo.png' %}" alt="EVM"></a></h1>
+        </div>
+        <nav>
+            <ul class="gnb">
+                <li>
+                    <a href="{% url 'generator:Upload_Photo' %}">문제 생성</a>
+                    <br><br>
+                    <a href="{% url 'generator:show_UserProblem' %}">생성한 문제 보기</a>
+                     <br><br>
+                    <a href="{% url 'generator:show_UserBlankNum' %}">빈칸 개수 수정</a>
+                     <br><br>
+                    <a href="{% url 'generator:show_DeveloperInfo' %}">개발자 정보</a>
+                     <br><br>
+                </li>
+            </ul>
+        </nav>
+        <style>
+        body{background-image: url('https://i.ibb.co/N2btZq6/background.png');
+             background-repeat:no-repeat;
+            background-position:1%1% ;
+            background-attachment: fixed;
+            background-size:126%126%;
+        }
+        </style>
+    </header>
+    <!-- //header -->
+    <style>
+        .left-box {
+            float: right;
+            margin-right: -50px;
+            width: 50%;
+
+        }
+        .right-box {
+
+ position:fixed;
+            width: 50%;
+        }
+        .blue_btn{
+            background-color: #B4B4B4;
+            color: #ffffff;
+            width: 310px;
+            height: 35px;
+            border: none;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .title_font{
+            font-family: 'Limelight', cursive;
+            font-size: 1.3em;
+
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+
+    <!-- main page part -->
+    <main id="container">
+        <section class="page_admin">
+            <div class="tit">
+                <div class="member_info_wrap">
+                    <button type="button" class="member_info">
+                       <strong>{{email}}</strong>
+                    </button>
+                    <ul class="list_member_menu">
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="#">Change Password</a></li>
+                        <li><a href="#">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="left-box"
+
+                    ><br><font size="5em"  face="나눔고딕">
+            [ 문제 사진 ]</font> <br><br><br>
+                <img src="{{ problem.image.url}}" alt = "ProblemImage" width="650"
+                style="position:relative;">
+                <br><br>
+
+                <button onclick = "location.href='/generator/beforeImageCrop/'" class="blue_ktn" style="    margin-left: 180px;">
+                    OCR 인식이 정확하지 않나요? <br>
+                    여기를 클릭하여 이미지를 잘라주세요!
+                </button>
+            </div>
+            <div class="right-box title_font"
+            style=" font-weight:bold;
+
+                    font-style:oblique;">
+                <br>
+
+
+
+                    </div>
+                <br>
+            <font size="5em" face="나눔고딕">
+            [ OCR 인식 지문 ]</font><br>
+                * OCR 인식이 정확하지 않으니 틀린 부분은 수정하세요.<br><br>
+                <head>
+                    <meta charset="utf-8">
+                    <title>HTML</title>
+                    <style>
+                        /*
+                    * {
+                        font-size: 20px;
+                        font-family: Consolas, sans-serif;
+                    }*/
+                    textarea {
+                        width: 80%;
+                        height: 300px;
+                    }
+                    </style>
+                </head>
+                <body>
+                <form method="POST" action="{% url 'generator:show_problem' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p><textarea name="text" spellcheck="true"
+                    style="resize:none;width:650px">
+                            {{problem.text}}
+                        </textarea>
+                    </p>
+                    <br>
+                    <p>
+
+                        <!-- style="resize:none;float:right;left:-45%;position:relative;height:10%; width:20%;킵-->
+                        <div style="'width:80px;right:100px;">
+                        <input type="submit" value="Submit" class="blue_btn" style="    margin-left: 180px;">
+                    </div>
+
+                    </p>
+                </form>
+                </body>
+            </div>
+        </section>
+    </main>
+
+
+{% endblock %}

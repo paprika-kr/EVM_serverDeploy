@@ -1,0 +1,12 @@
+.accounts-box{
+    width: 600px;
+    margin: 30px;
+    padding: 50px;
+    min-height: 500px;
+    background-color: #f8f8f8;
+}
+
+.form-control{
+    margin-bottom: 20px;
+    width: 400px;
+}
